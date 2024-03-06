@@ -12,12 +12,12 @@ export class CanvasObject {
 
   constructor(
     type: string,
-    x:number,
-    y:number,
-    h:number,
-    w:number,
-    color?:string,
-    rotate?:number
+    x: number,
+    y: number,
+    h: number,
+    w: number,
+    color?: string,
+    rotate?: number
   ) {
     this.type = type || 'rect'
     this.x = x;
@@ -34,14 +34,17 @@ export class CanvasObject {
     context.fillStyle = this.color;
 
     if(this.rotate) {
-      context.translate(this.x+this.w/2, this.y + this.h/2);
+      context.translate(this.x + this.w / 2, this.y + this.h / 2);
       context.rotate(this.rotate * Math.PI / 180);
-      context.translate(-this.x-this.w/2, -this.y - this.h/2);
+      context.translate(-this.x - this.w / 2, -this.y - this.h / 2);
     }
 
-    // if(this.imagesLoaded[rect.id]) {
-    //   this.context.drawImage(this.imagesLoaded[rect.id], rect.x, rect.y, rect.w, rect.h);
-    // }
+    debugger
+    if(this.type === 'image') {
+      const image = new Image();
+      image.src = `../../assets/${this.color}`;
+      context.drawImage(image, this.x, this.y, this.w, this.h);
+    }
 
     // this.context.fillRect(rect.x, rect.y, rect.w, rect.h);
     if(this.type === 'rect') {

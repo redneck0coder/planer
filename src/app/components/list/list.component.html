@@ -1,7 +1,7 @@
-<aside class="border ml-3" style="width: 300px; height: 500px">
-  <ul class="p-2 flex flex-col justify-center items-center">
+<aside class="absolute">
+  <ul class="ml-1.5 flex flex-col justify-center items-center">
     @for (item of itemService.getAll(); track item.id) {
-      <li (click)="canvasService.drawRect(item.id, item.color)" class="p-2 my-2 border w-full cursor-pointer">
+      <li (click)="canvasService.drawRect(item.id, item.color, item.type)" class="p-2 my-2 border w-full cursor-pointer">
         <span>{{ item.name }}</span>
       </li>
     }

@@ -22,6 +22,9 @@ export class CanvasComponent implements AfterViewInit {
 
   initCanvas() {
     const canvas = this.canvasElem.nativeElement;
+    this.canvasElem.nativeElement.width = window.innerWidth - 30;
+    this.canvasElem.nativeElement.height = window.innerHeight - 30;
+
     this.canvasService.context = canvas.getContext('2d');
     this.canvasService.canvas = canvas;
   }
